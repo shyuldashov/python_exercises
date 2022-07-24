@@ -14,16 +14,29 @@ def fraction_of_letter_in_word(words: str, letter: str) -> tuple:
     return frequency * 100, word
 
 
+def fraction_of_letter_in_word_2(words: str, letter) -> tuple:
+    # dict comprehension, создает словарь, где ключом является слово, значением является частота букв
+    words_and_letter_freq = {key: key.lower().count(letter.strip().lower()) / len(key) for key in words.split()}
+
+    # сортирует словарь по значению в порядке убывания и возвращает первый элемент (кортеж из двух элементов)
+    return sorted(words_and_letter_freq.items(), key=lambda x: x[1], reverse=True)[0]
+
+
 if __name__ == '__main__':
     text = input("Введите ваш текст: ")  # телефон арбуз вертолёт колбаса фонограмма
     let = input("Введите букву: ")  # а
 
     if text and let:
-        fraction, res_word = fraction_of_letter_in_word(text, let)
+        # Способ 1
+        # fraction, res_word = fraction_of_letter_in_word(text, let)
+
+        # Способ 2
+        res_word, fraction = fraction_of_letter_in_word_2(text, let)
+
         if fraction:
-            print(f"Слово: \"{res_word}\"\nДоля: {fraction:.2f}%")  # Слово: "колбаса" Доля: 28.57%
+            print(f'Слово: "{res_word}"\nДоля буквы "{let}": {fraction:.2f}%')  # Слово: "колбаса" Доля: 28.57%
         else:
-            print(f"Буква \"{let}\" не встречается ни в одном слове...")
+            print(f'Буква "{let}" не встречается ни в одном слове...')
     else:
         print("Вы не указали никаких слов или букву...")
 
