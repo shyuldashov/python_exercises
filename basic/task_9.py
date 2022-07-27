@@ -20,8 +20,7 @@ from random import randint
 # наибольшее число, которое мог бы загадать игрок
 n = int(input())
 # загаданное число
-# guess = randint(1, n + 1)
-guess = 5
+guess = randint(1, n + 1)
 
 yes_nums = set()  # множество, в котором есть загаданное число
 no_nums = set()  # множество, в котором нет загаданного числа
