@@ -6,5 +6,5 @@
 
 
 str_list = ["– Скажи-ка, дядя, ведь не даром", "Я Python выучил?"]
-two_dimensional = [row.split() for row in str_list]
+two_dimensional = [[word for word in row.split() if len(word) > 3] for row in str_list]
 print(two_dimensional)
